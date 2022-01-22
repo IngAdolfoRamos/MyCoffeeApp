@@ -11,6 +11,7 @@ namespace MyCoffeeApp.ViewModels
     {
         public CoffeeEquipmentViewModel()
         {
+            //command instead of click button handler event
             IncreaseCount = new Command(OnIncrease);
 
         }

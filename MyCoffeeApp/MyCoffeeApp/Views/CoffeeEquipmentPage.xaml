@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:viewmodels="clr-namespace:MyCoffeeApp.ViewModels"
+             x:DataType="viewmodels:CoffeeEquipmentViewModel"
+             x:Class="MyCoffeeApp.Views.EquipmentPage">
+
+    <ContentPage.BindingContext>
+        <viewmodels:CoffeeEquipmentViewModel/>
+    </ContentPage.BindingContext>
+
+    
+        <Grid
+            RowDefinitions="*, Auto, Auto, *">
+        
+            <Label
+                Grid.Row="1"
+                Text="{Binding CountDisplay}" 
+                VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="CenterAndExpand" />
+
+            <Button
+                Grid.Row="2"
+                Text="Click me" 
+                Command="{Binding IncreaseCount}"
+                HorizontalOptions="Center"/>
+
+        </Grid>
+
+    
+</ContentPage>

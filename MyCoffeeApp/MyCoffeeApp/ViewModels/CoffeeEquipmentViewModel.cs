@@ -24,14 +24,20 @@ namespace MyCoffeeApp.ViewModels
             Title = "Coffee Equipment";
             Coffee = new ObservableRangeCollection<Coffee>();
             CoffeeGroups = new ObservableRangeCollection<Grouping<string, Coffee>>();
-            var image = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRBoXyezjniIUJyXeKOPTyj466Nb6eCCrXUNg&usqp=CAU";
+            var image = "https://png.pngtree.com/png-clipart/20201107/ourmid/pngtree-creative-flat-coffee-cup-silhouette-png-image_2397039.jpg";
 
             Coffee.Add(new Coffee { Roaster = "UNO", Name = "NOMBRE", Image = image });
             Coffee.Add(new Coffee { Roaster = "DOS", Name = "NOMBRE", Image = image });
             Coffee.Add(new Coffee { Roaster = "TRES", Name = "NOMBRE", Image = image });
+            Coffee.Add(new Coffee { Roaster = "Cuatro", Name = "NOMBRE", Image = image });
+            Coffee.Add(new Coffee { Roaster = "Cinco", Name = "NOMBRE", Image = image });
+            Coffee.Add(new Coffee { Roaster = "Seis", Name = "NOMBRE", Image = image });
+            Coffee.Add(new Coffee { Roaster = "Siete", Name = "NOMBRE", Image = image });
+            Coffee.Add(new Coffee { Roaster = "Ocho", Name = "NOMBRE", Image = image });
+            Coffee.Add(new Coffee { Roaster = "Nueve", Name = "NOMBRE", Image = image });
 
-            CoffeeGroups.Add(new Grouping<string, Coffee>("TRES", new[] { Coffee[2] }));
-            CoffeeGroups.Add(new Grouping<string, Coffee>("DOS", Coffee.Take(2)));
+            CoffeeGroups.Add(new Grouping<string, Coffee>("Group One", new[] { Coffee[3] }));
+            CoffeeGroups.Add(new Grouping<string, Coffee>("Group Two", Coffee.Take(3)));
 
             RefreshCommand = new AsyncCommand(Refresh);
         }
@@ -39,7 +45,7 @@ namespace MyCoffeeApp.ViewModels
         async Task Refresh()
         {
             IsBusy = true;
-            await Task.Delay(2000);
+            await Task.Delay(1000);
             IsBusy = false;
         }
     }

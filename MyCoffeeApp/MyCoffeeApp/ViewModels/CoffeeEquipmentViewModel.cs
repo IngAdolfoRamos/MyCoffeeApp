@@ -19,6 +19,8 @@ namespace MyCoffeeApp.ViewModels
 
         public AsyncCommand RefreshCommand { get; }
 
+        public AsyncCommand<Coffee> FavoriteCommand { get; }
+
         public CoffeeEquipmentViewModel()
         {
             Title = "Coffee Equipment";
@@ -40,6 +42,15 @@ namespace MyCoffeeApp.ViewModels
             CoffeeGroups.Add(new Grouping<string, Coffee>("Group Two", Coffee.Take(3)));
 
             RefreshCommand = new AsyncCommand(Refresh);
+            FavoriteCommand = new AsyncCommand<Coffee>(Favorite);
+        }
+
+        async Task Favorite(Coffee coffee)
+        {
+            if (coffee == null)
+                return;
+
+            await Application.Current.MainPage.DisplayAlert("Favorite", coffee.Name, "Ok");
         }
 
         Coffee previouslySelected;

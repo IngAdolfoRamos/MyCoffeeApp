@@ -3,7 +3,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
              xmlns:viewmodels="clr-namespace:MyCoffeeApp.ViewModels" xmlns:model="clr-namespace:MyCoffeeApp.Models"
              x:Class="MyCoffeeApp.Views.EquipmentPage"
-             BackgroundColor="White">
+             BackgroundColor="White"
+             x:Name="CoffeePage">
 
     <ContentPage.BindingContext>
         <viewmodels:CoffeeEquipmentViewModel/>
@@ -27,7 +28,9 @@
             <DataTemplate>
                 <ViewCell>
                     <ViewCell.ContextActions>
-                        <MenuItem Text="Fav" Clicked="MenuItem_Clicked"/>
+                        <MenuItem Text="Fav" 
+                                  Command="{Binding Source={x:Reference CoffeePage}, Path=BindingContext.FavoriteCommand}"
+                                  CommandParameter="{Binding .}"/>
                         <MenuItem Text="Del" IsDestructive="True"/>
                     </ViewCell.ContextActions>
                     <Grid Padding="10">

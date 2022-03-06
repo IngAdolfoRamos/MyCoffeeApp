@@ -42,6 +42,25 @@ namespace MyCoffeeApp.ViewModels
             RefreshCommand = new AsyncCommand(Refresh);
         }
 
+        Coffee previouslySelected;
+        Coffee selectedCoffee;
+        public Coffee SelectedCoffee
+        {
+            get => selectedCoffee;
+
+            set
+            {
+                if (value != null)
+                {
+                    Application.Current.MainPage.DisplayAlert("Selected", value.Name, "Ok");
+                    previouslySelected = value;
+                    value = null;
+                }
+                selectedCoffee = value;
+                OnPropertyChanged();
+            }
+        }
+
         async Task Refresh()
         {
             IsBusy = true;
